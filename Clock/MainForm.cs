@@ -15,6 +15,7 @@ namespace Clock
         public MainForm()
         {
             InitializeComponent();
+            SetVisibility(false);//скрыть элементы 
         }
 
         private void timer_Tick(object sender, EventArgs e)//обработчик событий
@@ -38,19 +39,46 @@ namespace Clock
             this.TransparencyKey = visible ? Color.Empty : this.BackColor;
             this.ShowInTaskbar = visible;
         }
-        private void buttonHideControls_Click(object sender, EventArgs e)
-        {
-            SetVisibility(false);
-        }
-        private void labelTime_DoubleClick(object sender, EventArgs e)
-        {
-            SetVisibility(true);
-        }
+        private void buttonHideControls_Click(object sender, EventArgs e)=>        
+            SetVisibility(tsmiShowControls.Checked = false);
+        
+        private void labelTime_DoubleClick(object sender, EventArgs e)=>
+            SetVisibility(tsmiShowControls.Checked = true);
+        
         //system Tray по двойному щелчку
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             this.TopMost = true;
             this.TopMost = false;
         }
+
+        private void tsmiQuit_Click(object sender, EventArgs e)=>
+            this.Close();
+     
+        //не закрыть поверх окон
+        private void tsmiTopmost_Click(object sender, EventArgs e)=>
+            this.TopMost = tsmiTopmost.Checked;
+        
+        //показать дату в контекстном меню
+        private void tsmiShowDate_Click(object sender, EventArgs e)=>
+            checkBoxShowDate.Checked = tsmiShowDate.Checked;
+       
+        //синхрон галки конктсного меню и бокса
+        private void checkBoxShowDate_CheckedChanged(object sender, EventArgs e)=>
+            tsmiShowDate.Checked = checkBoxShowDate.Checked;
+        
+        //показать день недели в контекстном меню
+        private void tsmiShowWeekday_Click(object sender, EventArgs e)=>
+            checkBoxShowWeekday.Checked = tsmiShowWeekday.Checked;
+        
+        //синхрон галки конктсного меню и бокса
+        private void checkBoxShowWeekday_CheckedChanged(object sender, EventArgs e)=> //отправитель события и параметры сообщения
+            tsmiShowWeekday.Checked = (sender as CheckBox).Checked;//as преобразование типов
+        
+
+        private void tsmiShowControls_Click(object sender, EventArgs e)=>
+            SetVisibility(tsmiShowControls.Checked);
+
+       
     }
 }
