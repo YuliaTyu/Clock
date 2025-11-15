@@ -28,7 +28,7 @@ namespace Clock
                 labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
 
         }
-
+        //скрыть / показать 
         void SetVisibility(bool visible)
         {
             checkBoxShowDate.Visible = visible;
@@ -42,10 +42,15 @@ namespace Clock
         {
             SetVisibility(false);
         }
-
         private void labelTime_DoubleClick(object sender, EventArgs e)
         {
             SetVisibility(true);
+        }
+        //system Tray по двойному щелчку
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+            this.TopMost = false;
         }
     }
 }
