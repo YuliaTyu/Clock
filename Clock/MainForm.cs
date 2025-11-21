@@ -79,6 +79,28 @@ namespace Clock
         private void tsmiShowControls_Click(object sender, EventArgs e)=>
             SetVisibility(tsmiShowControls.Checked);
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InitializeComponent();
+            this.ForeColor = Color.Green;
+        }
+
+        private void labelTime_Click(object sender, EventArgs e)
+        {
+            InitializeComponent();
+            this.BackColor = Color.Maroon;
+        }
+
+        private void tsmiBackgroundColor_Click(object sender, EventArgs e)
+        {
+            InitializeComponent();
+            this.BackColor = Color.FromArgb(255,55,123);//Система RGB (0-255)
+        }
+
+        private void tsmiForegroundColor_Click(object sender, EventArgs e)
+        {
+            InitializeComponent();
+            this.ForeColor = Color.Yellow;
+        }
     }
 }
