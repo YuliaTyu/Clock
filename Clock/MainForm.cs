@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Clock
 {
@@ -14,13 +15,15 @@ namespace Clock
     {
         ColorDialog backgroundDialog;
         ColorDialog foregroundDialog;
+        ChooseFont fontDialog;
         public MainForm()
         {
             InitializeComponent();
             SetVisibility(false);//скрыть элементы
-            backgroundDialog = new ColorDialog();
-            foregroundDialog = new ColorDialog();
-            this.Location = new Point
+            backgroundDialog = new ColorDialog();//цвет фона
+            foregroundDialog = new ColorDialog();//цвет шрифтв
+            fontDialog = new ChooseFont();//Шрифт кастомный 
+            this.Location = new Point//открывать в парвом верхнем углу
                 (Screen.PrimaryScreen.Bounds.Width - this.labelTime.Width - 150,
                 50);
         }
@@ -95,9 +98,22 @@ namespace Clock
         private void tsmiForegroundColor_Click(object sender, EventArgs e)
         {
             if(foregroundDialog.ShowDialog() == DialogResult.OK)
-            {
-                labelTime.ForeColor = foregroundDialog.Color;
-            }
+               labelTime.ForeColor = foregroundDialog.Color;
         }
+        private void tsmiChooseFont_Click(object sender, EventArgs e)
+        {
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+                labelTime.Font = fontDialog.Font;
+        }
+
+        [DllImport("kernel32.dll")]
+        public static extern bool AllocConsole();
+        [DllImport("kernel32.dll")]
+        public static extern bool FreeConsole();
+        private void tsmiShowConsole_CheckedChanged(object sender, EventArgs e)
+        {
+            bool console = (sender as ToolStripMenuItem).Checked ? AllocConsole() : FreeConsole();
+        }
+
     }
 }
