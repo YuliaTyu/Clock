@@ -38,18 +38,18 @@
             this.tsmiShowWeekday = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiShowControls = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiChooseFont = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiColors = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiForegroundColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAutoStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.checkBoxShowDate = new System.Windows.Forms.CheckBox();
             this.checkBoxShowWeekday = new System.Windows.Forms.CheckBox();
             this.buttonHideControls = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tsmiChooseFont = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiColors = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiForegroundColor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBackgroundColor = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiAutoStart = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +81,7 @@
             this.toolStripSeparator3,
             this.tsmiQuit});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(205, 220);
+            this.contextMenuStrip.Size = new System.Drawing.Size(205, 198);
             // 
             // tsmiTopmost
             // 
@@ -124,6 +124,46 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(201, 6);
+            // 
+            // tsmiChooseFont
+            // 
+            this.tsmiChooseFont.Name = "tsmiChooseFont";
+            this.tsmiChooseFont.Size = new System.Drawing.Size(204, 22);
+            this.tsmiChooseFont.Text = "Choose font";
+            // 
+            // tsmiColors
+            // 
+            this.tsmiColors.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiForegroundColor,
+            this.tsmiBackgroundColor});
+            this.tsmiColors.Name = "tsmiColors";
+            this.tsmiColors.Size = new System.Drawing.Size(204, 22);
+            this.tsmiColors.Text = "Colors";
+            // 
+            // tsmiForegroundColor
+            // 
+            this.tsmiForegroundColor.Name = "tsmiForegroundColor";
+            this.tsmiForegroundColor.Size = new System.Drawing.Size(168, 22);
+            this.tsmiForegroundColor.Text = "Foreground color";
+            this.tsmiForegroundColor.Click += new System.EventHandler(this.tsmiForegroundColor_Click);
+            // 
+            // tsmiBackgroundColor
+            // 
+            this.tsmiBackgroundColor.Name = "tsmiBackgroundColor";
+            this.tsmiBackgroundColor.Size = new System.Drawing.Size(168, 22);
+            this.tsmiBackgroundColor.Text = "Background color";
+            this.tsmiBackgroundColor.Click += new System.EventHandler(this.tsmiBackgroundColor_Click);
+            // 
+            // tsmiAutoStart
+            // 
+            this.tsmiAutoStart.Name = "tsmiAutoStart";
+            this.tsmiAutoStart.Size = new System.Drawing.Size(204, 22);
+            this.tsmiAutoStart.Text = "Run on Windows startup";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(201, 6);
             // 
             // tsmiQuit
             // 
@@ -180,44 +220,6 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
             // 
-            // tsmiChooseFont
-            // 
-            this.tsmiChooseFont.Name = "tsmiChooseFont";
-            this.tsmiChooseFont.Size = new System.Drawing.Size(204, 22);
-            this.tsmiChooseFont.Text = "Choose font";
-            // 
-            // tsmiColors
-            // 
-            this.tsmiColors.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiForegroundColor,
-            this.tsmiBackgroundColor});
-            this.tsmiColors.Name = "tsmiColors";
-            this.tsmiColors.Size = new System.Drawing.Size(204, 22);
-            this.tsmiColors.Text = "Colors";
-            // 
-            // tsmiForegroundColor
-            // 
-            this.tsmiForegroundColor.Name = "tsmiForegroundColor";
-            this.tsmiForegroundColor.Size = new System.Drawing.Size(180, 22);
-            this.tsmiForegroundColor.Text = "Foreground color";
-            // 
-            // tsmiBackgroundColor
-            // 
-            this.tsmiBackgroundColor.Name = "tsmiBackgroundColor";
-            this.tsmiBackgroundColor.Size = new System.Drawing.Size(180, 22);
-            this.tsmiBackgroundColor.Text = "Background color";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(201, 6);
-            // 
-            // tsmiAutoStart
-            // 
-            this.tsmiAutoStart.Name = "tsmiAutoStart";
-            this.tsmiAutoStart.Size = new System.Drawing.Size(204, 22);
-            this.tsmiAutoStart.Text = "Run on Windows startup";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +232,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Clock_SPU_411";
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
