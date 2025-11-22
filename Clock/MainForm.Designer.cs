@@ -146,14 +146,14 @@
             // tsmiForegroundColor
             // 
             this.tsmiForegroundColor.Name = "tsmiForegroundColor";
-            this.tsmiForegroundColor.Size = new System.Drawing.Size(180, 22);
+            this.tsmiForegroundColor.Size = new System.Drawing.Size(168, 22);
             this.tsmiForegroundColor.Text = "Foreground color";
             this.tsmiForegroundColor.Click += new System.EventHandler(this.tsmiForegroundColor_Click);
             // 
             // tsmiBackgroundColor
             // 
             this.tsmiBackgroundColor.Name = "tsmiBackgroundColor";
-            this.tsmiBackgroundColor.Size = new System.Drawing.Size(180, 22);
+            this.tsmiBackgroundColor.Size = new System.Drawing.Size(168, 22);
             this.tsmiBackgroundColor.Text = "Background color";
             this.tsmiBackgroundColor.Click += new System.EventHandler(this.tsmiBackgroundColor_Click);
             // 
@@ -246,6 +246,7 @@
             this.Controls.Add(this.checkBoxShowWeekday);
             this.Controls.Add(this.checkBoxShowDate);
             this.Controls.Add(this.labelTime);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
