@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.comboBoxFont = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownFontSize = new System.Windows.Forms.NumericUpDown();
             this.labelExample = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxFont
@@ -47,13 +47,19 @@
             this.comboBoxFont.TabIndex = 0;
             this.comboBoxFont.SelectedIndexChanged += new System.EventHandler(this.comboBoxFont_SelectedIndexChanged);
             // 
-            // numericUpDown1
+            // numericUpDownFontSize
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(584, 36);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 31);
-            this.numericUpDown1.TabIndex = 1;
+            this.numericUpDownFontSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDownFontSize.Location = new System.Drawing.Point(584, 36);
+            this.numericUpDownFontSize.Name = "numericUpDownFontSize";
+            this.numericUpDownFontSize.Size = new System.Drawing.Size(120, 31);
+            this.numericUpDownFontSize.TabIndex = 1;
+            this.numericUpDownFontSize.Value = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            this.numericUpDownFontSize.ValueChanged += new System.EventHandler(this.numericUpDownFontSize_ValueChanged);
             // 
             // labelExample
             // 
@@ -96,12 +102,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelExample);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericUpDownFontSize);
             this.Controls.Add(this.comboBoxFont);
             this.Name = "ChooseFont";
             this.Text = "ChooseFont";
             this.Load += new System.EventHandler(this.ChooseFont_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,7 +116,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxFont;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownFontSize;
         private System.Windows.Forms.Label labelExample;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button button1;
