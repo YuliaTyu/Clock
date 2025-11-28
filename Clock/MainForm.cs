@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Clock
 {
     public partial class MainForm : Form
     {
+            Timer timer01 = new Timer();
+            SoundPlayer sp = new SoundPlayer("D:\\1.wav");
+            bool b = false;//завести будильник/убрать будильник
         public MainForm()
         {
             InitializeComponent();
@@ -21,13 +25,13 @@ namespace Clock
         private void timer_Tick(object sender, EventArgs e)//обработчик событий
         {
             //labelTime.Text = DateTime.Now.ToString("HH:mm:ss");// 24 часовой формат
+            labelTime.Text = DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00");
             labelTime.Text = DateTime.Now.ToString("hh:mm:ss tt",
                 System.Globalization.CultureInfo.InvariantCulture); //AM/PM fix - 12 часовой формат 
             if (checkBoxShowDate.Checked)
                 labelTime.Text += $"\n{DateTime.Now.ToString("yyyy.MM.dd")}";
             if (checkBoxShowWeekday.Checked)
                 labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
-
         }
         //скрыть / показать 
         void SetVisibility(bool visible)
@@ -81,7 +85,23 @@ namespace Clock
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.ForeColor = Color.Green;
+            //this.ForeColor = Color.Green;
+            if (b == false)
+            {
+                labelTime.Text = maskedTextBox1.Text;
+                timer.Start();
+                maskedTextBox1.Visible = false;
+                button1.Text = "Убрать будильник";
+                b = true;
+            }
+            else if(b==true)
+            {
+                labelTime.Text = "00:00";
+                timer.Stop();
+                maskedTextBox1.Visible = true;
+                button1.Text = "Завести будильник";
+                b = false;
+            }
         }
 
         private void labelTime_Click(object sender, EventArgs e)
@@ -97,6 +117,34 @@ namespace Clock
         private void tsmiForegroundColor_Click(object sender, EventArgs e)
         {
             this.ForeColor = Color.Yellow;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //this.ForeColor = Color.Green;
+            sp.Stop();
+            button2.Enabled = false;
+            maskedTextBox1.Visible = true;
+            button1.Text = "Завести будильник";
+            b = false;
+        
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            button2.Enabled = false;
+            timer01.Interval = 1000;
+            timer01.Tick += new EventHandler(timer_Tick);//срабатывает при событии
+            timer01.Start();
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if(labelTime.Text == labelTime.Text + ":00")
+            {
+                button2.Enabled = true;
+                sp.Play();
+            }
         }
     }
 }
