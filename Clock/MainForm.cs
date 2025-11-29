@@ -24,10 +24,11 @@ namespace Clock
             backgroundDialog = new ColorDialog();//цвет фона
             foregroundDialog = new ColorDialog();//цвет шрифтв
             fontDialog = new ChooseFont();//Шрифт кастомный 
-            alarms = new AlarmsForm();
+            alarms = new AlarmsForm(this);
             this.Location = new Point//открывать в парвом верхнем углу
                 (Screen.PrimaryScreen.Bounds.Width - this.labelTime.Width - 150,
                 50);
+            tsmiTopmost.Checked = this.TopMost = true;
         }
 
         private void timer_Tick(object sender, EventArgs e)//обработчик событий
@@ -39,7 +40,7 @@ namespace Clock
                 labelTime.Text += $"\n{DateTime.Now.ToString("yyyy.MM.dd")}";
             if (checkBoxShowWeekday.Checked)
                 labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
-
+            notifyIcon.Text = labelTime.Text;
         }
         //скрыть / показать 
         void SetVisibility(bool visible)
