@@ -16,6 +16,7 @@ namespace Clock
         ColorDialog backgroundDialog;
         ColorDialog foregroundDialog;
         ChooseFont fontDialog;
+        AlarmsForm alarms;
         public MainForm()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace Clock
             backgroundDialog = new ColorDialog();//цвет фона
             foregroundDialog = new ColorDialog();//цвет шрифтв
             fontDialog = new ChooseFont();//Шрифт кастомный 
+            alarms = new AlarmsForm();
             this.Location = new Point//открывать в парвом верхнем углу
                 (Screen.PrimaryScreen.Bounds.Width - this.labelTime.Width - 150,
                 50);
@@ -115,5 +117,9 @@ namespace Clock
             bool console = (sender as ToolStripMenuItem).Checked ? AllocConsole() : FreeConsole();
         }
 
+        private void tsmiAlarms_Click(object sender, EventArgs e)
+        {
+            alarms.ShowDialog();
+        }
     }
 }
