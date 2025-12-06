@@ -21,9 +21,21 @@ namespace Clock
             }
             Console.WriteLine(Weekdays);
         }
+        public Alarm()
+        {
+
+        }
+        public Alarm(Alarm other)
+        {
+            this.Date = other.Date;
+            this.Time = other.Time;
+            this.Weekdays = other.Weekdays;
+            this.Filename = other.Filename;
+        }
         public override string ToString()
         {
             return $"{Date.ToString("yyyy.MM.dd")}-{Time.ToString("hh:mm:ss tt")}-{Weekdays}-{Filename.Split('\\').Last()}";
         }
+
     }
 }

@@ -17,6 +17,7 @@ namespace Clock
         ColorDialog foregroundDialog;
         ChooseFont fontDialog;
         AlarmsForm alarms;
+        Alarm alarm;
         public MainForm()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Clock
                 50);
             tsmiTopmost.Checked = this.TopMost = true;
            // AllocConsole(); // показывает консоль
+
         }
 
         private void timer_Tick(object sender, EventArgs e)//обработчик событий
@@ -42,6 +44,18 @@ namespace Clock
             if (checkBoxShowWeekday.Checked)
                 labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
             notifyIcon.Text = labelTime.Text;
+            
+            if (alarms.Alarm != null)
+            {
+                alarm = alarms.Alarm;
+                if(alarm.Time.Hour == DateTime.Now.Hour && alarm.Time.Minute == DateTime.Now.Minute && alarm.Time.Second ==DateTime.Now.Second)
+                {
+                    //MessageBox.Show(alarm.ToString());
+                    axWindowsMediaPlayer.URL = alarm.Filename;
+                    axWindowsMediaPlayer.Visible = true;
+                    axWindowsMediaPlayer.Ctlcontrols.play();
+                }
+            }
         }
         //скрыть / показать 
         void SetVisibility(bool visible)

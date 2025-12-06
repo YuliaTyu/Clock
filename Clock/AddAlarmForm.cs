@@ -21,7 +21,8 @@ namespace Clock
             InitializeComponent();
             dtpDate.Enabled = cbUseDate.Checked;
             fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "All files |*.mp3; *.flacc|MP-3 file (*.mp3)|*.mp3|Flac files (*.flacc)|*.flacc";
+            fileDialog.Filter = 
+                "All files |*.mp3; *.flacc|MP-3 file (*.mp3)|*.mp3|Flac files (*.flacc)|*.flacc";
             Alarm = new Alarm();
         }
         public AddAlarmForm(Form parent):this()
@@ -73,7 +74,7 @@ namespace Clock
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
-            Alarm.Date = dtpDate.Value;
+            Alarm.Date = dtpDate.Enabled ? dtpDate.Value : DateTime.MaxValue;
             Alarm.Time = dtpTime.Value;
             Alarm.Filename = lblFile.Text;
             Alarm.WeekdaysFromArray(WeekdaysToArray());
